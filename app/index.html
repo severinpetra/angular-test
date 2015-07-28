@@ -21,9 +21,19 @@
 
 <hr>
 
-<div ng-controller="SimpleList">
-    {{name}}
+<div ng-controller="SimpleList as simpleList">
+    <span>{{label1}}</span>
+    <input type="text" placeholder="{{label3}}" ng-model="query">
+    <select ng-model="order">
+        <option value="null">Без сортировки</option>
+        <option value="">По возрастанию</option>
+        <option value="-">По убыванию</option>
+    </select>
+    <div ng-repeat="node in list | filter:query | orderBy:order">{{node}}</div>
+    <div>{{label2}} {{list.length}}</div>
 </div>
+
+<hr>
 
 </body>
 </html>
